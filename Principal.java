@@ -61,7 +61,13 @@ public class Principal {
         boolean executando = true;
         while (executando) {
             System.out.println("\n=== Menu Cliente ===");
-            System.out.println("1. Fazer Pedido");
+            
+            if (!restaurantes.isEmpty()) {
+                System.out.println("1. Fazer Pedido");
+            } else {
+                System.out.println("(Fazer pedido indisponível - Não há restaurantes cadastrados)");
+            }
+            
             System.out.println("2. Ver Meus Pedidos");
             System.out.println("3. Ver Restaurantes");
             System.out.println("4. Sair");
@@ -72,7 +78,11 @@ public class Principal {
 
             switch (opcao) {
                 case 1:
-                    fazerPedido();
+                    if (!restaurantes.isEmpty()) {
+                        fazerPedido();
+                    } else {
+                        System.out.println("Opção indisponível no momento.");
+                    }
                     break;
                 case 2:
                     verMeusPedidos();
@@ -240,6 +250,24 @@ public class Principal {
     private static void fazerPedido() {
         if (usuarioLogado == null) {
             System.out.println("É necessário fazer login primeiro!");
+            return;
+        }
+
+        if (restaurantes.isEmpty()) {
+            System.out.println("Não há restaurantes cadastrados no momento.");
+            return;
+        }
+
+        boolean existemPratos = false;
+        for (Restaurantes r : restaurantes) {
+            if (!r.getPratos().isEmpty()) {
+                existemPratos = true;
+                break;
+            }
+        }
+
+        if (!existemPratos) {
+            System.out.println("Não há restaurantes com pratos disponíveis no momento.");
             return;
         }
 
