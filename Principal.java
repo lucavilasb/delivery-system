@@ -297,9 +297,18 @@ public class Principal {
         }
         
         System.out.println("\n=== Seus Pedidos ===");
+        double totalGeral = 0;
         for (Pedido pedido : pedidos) {
-            System.out.println(pedido.toString());
+            System.out.println("\n------------------------");
+            System.out.println("Restaurante: " + pedido.getRestaurante().getNome());
+            System.out.println("Prato: " + pedido.getPrato().getNome());
+            System.out.println("Valor: R$" + String.format("%.2f", pedido.getTotal()));
+            System.out.println("Status: " + pedido.getStatus());
+            System.out.println("Data do Pedido: " + pedido.getDataPedido());
+            totalGeral += pedido.getTotal();
         }
+        System.out.println("\n------------------------");
+        System.out.println("Total de todos os pedidos: R$" + String.format("%.2f", totalGeral));
     }
 
     private static void verPedidos() {
