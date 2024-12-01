@@ -87,4 +87,3 @@ public class Usuario extends Pessoa {
         this.dataAtualizacao = dataAtualizacao;
     }
 }
-
