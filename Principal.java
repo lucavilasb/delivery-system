@@ -65,7 +65,7 @@ public class Principal {
             if (!restaurantes.isEmpty()) {
                 System.out.println("1. Fazer Pedido");
             } else {
-                System.out.println("(Fazer pedido indisponível - Não há restaurantes cadastrados)");
+                System.out.println("(Serviço indisponível! Ainda não temos restaurantes cadastrados.)");
             }
             
             System.out.println("2. Ver Meus Pedidos");
